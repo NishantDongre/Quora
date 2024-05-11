@@ -5,6 +5,7 @@ const { StatusCodes } = require("http-status-codes");
 const { PORT } = require("./config/server.config");
 const apiRouter = require("./routes");
 const connectToDB = require("./config/db.config");
+const errorHandler = require("./utils/errorHandler");
 
 const app = express();
 
@@ -19,6 +20,9 @@ app.get("/ping", (req, res) => {
 });
 
 app.use("/api", apiRouter);
+
+// Error handler Middleware
+app.use(errorHandler);
 
 app.listen(PORT, async (req, res) => {
     console.log(`Quora-Server listenning on ${PORT}`);
