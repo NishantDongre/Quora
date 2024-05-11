@@ -1,5 +1,7 @@
+const { StatusCodes } = require("http-status-codes");
+
 function pingUserController(req, res) {
-    res.status(200).json({
+    res.status(StatusCodes.OK).json({
         message: "User Router alive",
     });
 }
