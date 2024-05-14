@@ -1,4 +1,4 @@
-const { Question, Topic } = require("../models");
+const { Question, Topic, Answer } = require("../models");
 
 const NotFound = require("../errors/notFound.error");
 
@@ -58,6 +58,20 @@ class QuestionRepository {
                 questionsByTags.some((q) => q._id.equals(question._id))
             );
             return filteredQuestions;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async postAnswer(questionId, answerBody) {
+        try {
+            const { userId, text } = answerBody;
+            const answer = await Answer.create({
+                questionId,
+                userId,
+                text,
+            });
+            return answer;
         } catch (error) {
             throw error;
         }

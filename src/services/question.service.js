@@ -18,6 +18,15 @@ class QuestionService {
 
         return questions;
     }
+
+    async postAnswer(questionId, answerBody) {
+        const answer = await this.questionRepository.postAnswer(
+            questionId,
+            answerBody
+        );
+
+        return answer;
+    }
 }
 
 module.exports = QuestionService;

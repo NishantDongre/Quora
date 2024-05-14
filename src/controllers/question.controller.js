@@ -47,8 +47,24 @@ async function getQuestion(req, res, next) {
     }
 }
 
+async function postAnswer(req, res, next) {
+    try {
+        const { questionId } = req.params?.questionId;
+        const answer = await questionService.postAnswer(questionId, req.body);
+        return res.status(StatusCodes.CREATED).json({
+            success: true,
+            message: "Succefully posted an answer to the question",
+            error: {},
+            data: answer,
+        });
+    } catch (error) {
+        next(error);
+    }
+}
+
 module.exports = {
     pingQuestionController,
     addQuestion,
     getQuestion,
+    postAnswer,
 };
