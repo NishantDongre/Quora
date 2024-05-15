@@ -10,6 +10,15 @@ class AnswerService {
         );
         return updatedAnswer;
     }
+
+    async addCommentOnAnswer(answerId, userId, commentText) {
+        const commentOnAnswer = await this.answerRepository.addCommentOnAnswer(
+            answerId,
+            userId,
+            commentText
+        );
+        return commentOnAnswer;
+    }
 }
 
 module.exports = AnswerService;
