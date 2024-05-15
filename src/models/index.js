@@ -4,4 +4,5 @@ module.exports = {
     Question: require("./question.model"),
     Answer: require("./answer.model"),
     Comment: require("./comment.model"),
+    Like: require("./like.model"),
 };
